@@ -13,7 +13,7 @@ public class ActorAttack : MonoBehaviour {
 
 	void Update ()
 	{
-
+		UpdateAttack();
 	}
 
 	// ATTACK //
@@ -29,9 +29,9 @@ public class ActorAttack : MonoBehaviour {
 
 	void UpdateAttack ()
 	{
-		if (attackDown && !weapon.attacking)
+		if (attackDown)
 		{
-			print("attacking");
+			weapon.ReceiveInput();
 		}
 	}
 }

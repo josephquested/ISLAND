@@ -4,15 +4,44 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-	public bool attacking;
-
-	void Start ()
-	{
-
-	}
+	// SYSTEM //
 
 	void Update ()
 	{
+		UpdateRotation();
+	}
 
+	// ATTACK //
+
+	public GameObject attackObject;
+
+	public bool attacking;
+
+	public virtual void ReceiveInput ()
+	{
+		if (!attacking)
+		{
+			Attack();
+		}
+	}
+
+	public virtual void Attack ()
+	{
+		// override //
+	}
+
+	// ROTATION //
+
+	Vector3 GetMousePosition ()
+	{
+		Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
+		return Camera.main.ScreenToWorldPoint(mousePos);
+	}
+
+	void UpdateRotation ()
+	{
+		Vector3 dir = GetMousePosition() - transform.position;
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 	}
 }
