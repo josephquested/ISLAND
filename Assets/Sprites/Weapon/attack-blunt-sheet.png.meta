@@ -1,19 +1,23 @@
 fileFormatVersion: 2
-guid: d9e9cbd1c080efc4fa882041ddda5e2f
-timeCreated: 1493184550
+guid: c9f17da6acfa0446088eed7f721808b1
+timeCreated: 1493246291
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: punch-sheet_0
-    21300002: punch-sheet_1
-    21300004: punch-sheet_2
-    21300006: punch-sheet_3
-    21300008: punch-sheet_4
-    21300010: punch-sheet_5
-    21300012: punch-sheet_6
-    21300014: punch-sheet_7
-    21300016: punch-sheet_8
-    21300018: punch-sheet_9
+    21300000: attack-blunt-sheet_0
+    21300002: attack-blunt-sheet_1
+    21300004: attack-blunt-sheet_2
+    21300006: attack-blunt-sheet_3
+    21300008: attack-blunt-sheet_4
+    21300010: attack-blunt-sheet_5
+    21300012: attack-blunt-sheet_6
+    21300014: attack-blunt-sheet_7
+    21300016: attack-blunt-sheet_8
+    21300018: attack-blunt-sheet_9
+    21300020: attack-blunt-sheet_10
+    21300022: attack-blunt-sheet_11
+    21300024: attack-blunt-sheet_12
+    21300026: attack-blunt-sheet_13
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -61,7 +65,7 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 2
     compressionQuality: 50
@@ -69,7 +73,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 2
     compressionQuality: 50
@@ -80,7 +84,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: punch-sheet_0
+      name: attack-blunt-sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -93,7 +97,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: punch-sheet_1
+      name: attack-blunt-sheet_1
       rect:
         serializedVersion: 2
         x: 16
@@ -106,7 +110,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: punch-sheet_2
+      name: attack-blunt-sheet_2
       rect:
         serializedVersion: 2
         x: 32
@@ -119,7 +123,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: punch-sheet_3
+      name: attack-blunt-sheet_3
       rect:
         serializedVersion: 2
         x: 48
@@ -132,7 +136,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: punch-sheet_4
+      name: attack-blunt-sheet_4
       rect:
         serializedVersion: 2
         x: 64
@@ -145,62 +149,10 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: punch-sheet_5
+      name: attack-blunt-sheet_5
       rect:
         serializedVersion: 2
         x: 80
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: punch-sheet_6
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: punch-sheet_7
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: punch-sheet_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: punch-sheet_9
-      rect:
-        serializedVersion: 2
-        x: 144
         y: 0
         width: 16
         height: 16

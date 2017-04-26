@@ -13,7 +13,8 @@ public class Weapon : MonoBehaviour {
 
 	// ATTACK //
 
-	public GameObject attackObject;
+	public GameObject attackPrefab;
+	public Transform attackSpawn;
 
 	public bool attacking;
 

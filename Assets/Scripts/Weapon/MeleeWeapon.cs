@@ -8,8 +8,8 @@ public class MeleeWeapon : Weapon {
 
 	public override void Attack ()
 	{
-		var _attackObject = Instantiate(attackObject, transform.position, transform.rotation);
+		var _attackObject = Instantiate(attackPrefab, attackSpawn.position, attackSpawn.rotation);
 		_attackObject.transform.parent = transform.parent;
-		Destroy(_attackObject, 1f);
+		Destroy(_attackObject, 0.2f);
 	}
 }
