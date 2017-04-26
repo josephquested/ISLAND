@@ -9,6 +9,12 @@ public class PlayerController : MonoBehaviour {
 	void Start ()
 	{
 		movement = GetComponent<ActorMovement>();
+		attack = GetComponent<ActorAttack>();
+	}
+
+	void Update ()
+	{
+		UpdateAttack();
 	}
 
 	void FixedUpdate ()
@@ -31,6 +37,22 @@ public class PlayerController : MonoBehaviour {
 
 	void UpdateMovement ()
 	{
-		movement.ReceiveAxis(horizontal, vertical);
+		movement.ReceiveInput(horizontal, vertical);
+	}
+
+	// ATTACK //
+
+	ActorAttack attack;
+
+	bool attackDown;
+
+	public void ReceiveAttack (bool _attackDown)
+	{
+		attackDown = _attackDown;
+	}
+
+	void UpdateAttack ()
+	{
+		attack.ReceiveInput(attackDown);
 	}
 }

@@ -13,6 +13,11 @@ public class PlayerInput : MonoBehaviour {
 		controller = GetComponent<PlayerController>();
 	}
 
+	void Update ()
+	{
+		UpdateAttack();
+	}
+
 	void FixedUpdate ()
 	{
 		UpdateAxis();
@@ -23,5 +28,10 @@ public class PlayerInput : MonoBehaviour {
 	void UpdateAxis ()
 	{
 		controller.ReceiveAxis(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+	}
+
+	void UpdateAttack ()
+	{
+		controller.ReceiveAttack(Input.GetButtonDown("Attack"));
 	}
 }
