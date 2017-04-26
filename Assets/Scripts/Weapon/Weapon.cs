@@ -28,7 +28,8 @@ public class Weapon : MonoBehaviour {
 
 	public virtual void Attack ()
 	{
-		// override //
+		var attackObject = Instantiate(attackPrefab, attackSpawn.position, attackSpawn.rotation);
+		attackObject.transform.parent = transform.parent;
 	}
 
 	// ROTATION //
