@@ -6,32 +6,32 @@ public class ActorInventory : MonoBehaviour {
 
 	// WEAPON //
 
-	public Weapon equippedWeapon;
+	public Weapon primaryWeapon;
 	public Weapon secondaryWeapon;
-
 	public Weapon defaultWeapon;
 
 	public void EquipWeapon (Weapon weapon)
 	{
-		equippedWeapon = weapon;
-		weapon.transform.parent = transform;
-		weapon.AddToInventory();
+		weapon.AddToInventory(this);
+		primaryWeapon = weapon;
 	}
 
 	public void ThrowWeapon ()
 	{
-		if (equippedWeapon != defaultWeapon)
+		if (primaryWeapon != defaultWeapon)
 		{
-			equippedWeapon.RemoveFromInventory();
-			equippedWeapon = defaultWeapon;
+			primaryWeapon.RemoveFromInventory();
+			primaryWeapon = defaultWeapon;
 		}
 	}
 
 	public void ToggleWeapon ()
 	{
-		Weapon _equippedWeapon = equippedWeapon;
-		Weapon _secondaryWeapon = equippedWeapon;
-		equippedWeapon = _secondaryWeapon;
-		secondaryWeapon = _equippedWeapon;
+		primaryWeapon.SetAsSecondary();
+		secondaryWeapon.SetAsPrimary();
+
+		Weapon _primaryWeapon = primaryWeapon;
+		primaryWeapon = secondaryWeapon;
+		secondaryWeapon = _primaryWeapon;
 	}
 }

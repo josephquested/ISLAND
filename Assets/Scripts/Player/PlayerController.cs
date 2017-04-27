@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		UpdateAttack();
 		UpdateInteract();
+		UpdateToggleWeapon();
 	}
 
 	void FixedUpdate ()
@@ -65,9 +66,17 @@ public class PlayerController : MonoBehaviour {
 
 	bool toggleWeapon;
 
-	void ReceiveToggleWeapon (bool _toggleWeapon)
+	public void ReceiveToggleWeapon (bool _toggleWeapon)
 	{
 		toggleWeapon = _toggleWeapon;
+	}
+
+	public void UpdateToggleWeapon ()
+	{
+		if (toggleWeapon)
+		{
+			inventory.ToggleWeapon();
+		}
 	}
 
 	// INTERACT //

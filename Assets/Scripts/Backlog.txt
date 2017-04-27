@@ -1,0 +1,1 @@
+punch weapon does not become un-equipped when you pick up a weapon for the first time []

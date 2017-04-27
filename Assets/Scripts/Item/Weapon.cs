@@ -9,22 +9,54 @@ public class Weapon : Item {
 	void Start ()
 	{
 		anim = GetComponent<Animator>();
+		rotateToCursor = GetComponent<RotateToCursor>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
-	// PICKUP //
+	// INVENTORY //
 
-	public override void AddToInventory ()
+	RotateToCursor rotateToCursor;
+	SpriteRenderer spriteRenderer;
+
+	int primaryOrderInLayer = 5;
+	int secondaryOrderInLayer = 3;
+
+	public Vector3 equippedPosition;
+
+	public override void AddToInventory (ActorInventory inventory)
 	{
-		GetComponent<RotateToCursor>().enabled = true;
-		GetComponent<SpriteRenderer>().sortingOrder += 2;
-		transform.localPosition = new Vector3(-0.15f, -0.15f, 0);
+		transform.parent = inventory.transform;
+		Equip();
 	}
 
 	public override void RemoveFromInventory ()
 	{
-		GetComponent<RotateToCursor>().enabled = false;
-		GetComponent<SpriteRenderer>().sortingOrder -= 2;
 		transform.parent = null;
+		Unequip();
+	}
+
+	public void Equip ()
+	{
+		rotateToCursor.enabled = true;
+		spriteRenderer.sortingOrder = primaryOrderInLayer;
+		transform.localPosition = equippedPosition;
+	}
+
+	public void Unequip ()
+	{
+		rotateToCursor.enabled = false;
+		spriteRenderer.sortingOrder = secondaryOrderInLayer;
+	}
+
+	public void SetAsPrimary ()
+	{
+		Equip();
+	}
+
+	public void SetAsSecondary ()
+	{
+		Unequip();
+		transform.localPosition = Vector2.zero;
 	}
 
 	// ATTACK //

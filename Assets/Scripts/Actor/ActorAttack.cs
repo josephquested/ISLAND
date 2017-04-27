@@ -31,7 +31,7 @@ public class ActorAttack : MonoBehaviour {
 	{
 		if (attackDown)
 		{
-			inventory.equippedWeapon.ReceiveInput();
+			inventory.primaryWeapon.ReceiveInput();
 		}
 	}
 }

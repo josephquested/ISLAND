@@ -12,7 +12,7 @@ public class Item : MonoBehaviour {
 
 	// ITEM //
 
-	public virtual void AddToInventory ()
+	public virtual void AddToInventory (ActorInventory inventory)
 	{
 		// override //
 	}
