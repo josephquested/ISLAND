@@ -6,6 +6,11 @@ public class Weapon : MonoBehaviour {
 
 	// SYSTEM //
 
+	void Start ()
+	{
+		anim = GetComponent<Animator>();
+	}
+
 	void Update ()
 	{
 		UpdateRotation();
@@ -17,6 +22,7 @@ public class Weapon : MonoBehaviour {
 	public Transform attackSpawn;
 
 	public bool attacking;
+	public bool inheritParentVelocity;
 
 	public virtual void ReceiveInput ()
 	{
@@ -29,7 +35,12 @@ public class Weapon : MonoBehaviour {
 	public virtual void Attack ()
 	{
 		var attackObject = Instantiate(attackPrefab, attackSpawn.position, attackSpawn.rotation);
-		attackObject.transform.parent = transform.parent;
+		AnimateAttack();
+		
+		if (inheritParentVelocity)
+		{
+			attackObject.GetComponent<Rigidbody2D>().velocity = GetComponentInParent<Rigidbody2D>().velocity;
+		}
 	}
 
 	// ROTATION //
@@ -45,5 +56,14 @@ public class Weapon : MonoBehaviour {
 		Vector3 dir = GetMousePosition() - transform.position;
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+	}
+
+	// ANIMATION //
+
+	Animator anim;
+
+	void AnimateAttack ()
+	{
+		anim.SetTrigger("Attack");
 	}
 }
