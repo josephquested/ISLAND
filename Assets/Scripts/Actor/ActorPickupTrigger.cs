@@ -4,23 +4,6 @@ using UnityEngine;
 
 public class ActorPickupTrigger : MonoBehaviour {
 
-	// SYSTEM //
-
-	void Start ()
-	{
-
-	}
-
-	// PICKUP //
-
-	public void ReceiveInput ()
-	{
-		if (itemInTrigger != null)
-		{
-			itemInTrigger.Pickup();
-		}
-	}
-
 	// TRIGGERS //
 
 	public Item itemInTrigger;

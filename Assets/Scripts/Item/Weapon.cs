@@ -2,13 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : Item {
 
 	// SYSTEM //
 
 	void Start ()
 	{
 		anim = GetComponent<Animator>();
+	}
+
+	// PICKUP //
+
+	public override void PickupToInventory (ActorInventory inventory)
+	{
+		GetComponent<RotateToCursor>().enabled = true;
+		GetComponent<SpriteRenderer>().sortingOrder += 2;
+		transform.parent = inventory.transform;
+		transform.localPosition = new Vector3(-0.15f, -0.15f, 0);
+	}
+
+	public override void DropFromInventory (ActorInventory inventory)
+	{
+		GetComponent<RotateToCursor>().enabled = false;
+		GetComponent<SpriteRenderer>().sortingOrder -= 2;
+		transform.parent = null;
 	}
 
 	// ATTACK //

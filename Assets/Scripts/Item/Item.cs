@@ -10,22 +10,15 @@ public class Item : MonoBehaviour {
 
 	public ItemType itemType;
 
-	void Start ()
-	{
-
-	}
-
 	// ITEM //
 
-	public bool inInventory;
-
-	public void Pickup ()
+	public virtual void PickupToInventory (ActorInventory inventory)
 	{
-		print("pickup!");
+		// override //
 	}
 
-	public void Throw ()
+	public virtual void DropFromInventory (ActorInventory inventory)
 	{
-
+		// override //
 	}
 }

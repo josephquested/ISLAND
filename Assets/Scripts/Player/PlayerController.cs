@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		movement = GetComponent<ActorMovement>();
 		attack = GetComponent<ActorAttack>();
+		inventory = GetComponent<ActorInventory>();
 		pickupTrigger = GetComponentInChildren<ActorPickupTrigger>();
 	}
 
@@ -58,6 +59,10 @@ public class PlayerController : MonoBehaviour {
 		attack.ReceiveInput(attackDown);
 	}
 
+	// INVENTORY //
+
+	ActorInventory inventory;
+
 	// PICKUP //
 
 	ActorPickupTrigger pickupTrigger;
@@ -71,9 +76,9 @@ public class PlayerController : MonoBehaviour {
 
 	void UpdatePickup ()
 	{
-		if (pickupDown)
+		if (pickupDown && pickupTrigger.itemInTrigger != null)
 		{
-			pickupTrigger.ReceiveInput();
+			inventory.Pickup(pickupTrigger.itemInTrigger);
 		}
 	}
 }

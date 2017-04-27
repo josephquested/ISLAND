@@ -8,7 +8,7 @@ public class ActorAttack : MonoBehaviour {
 
 	void Start ()
 	{
-
+		inventory = GetComponent<ActorInventory>();
 	}
 
 	void Update ()
@@ -18,7 +18,7 @@ public class ActorAttack : MonoBehaviour {
 
 	// ATTACK //
 
-	public Weapon weapon;
+	ActorInventory inventory;
 
 	bool attackDown;
 
@@ -31,7 +31,7 @@ public class ActorAttack : MonoBehaviour {
 	{
 		if (attackDown)
 		{
-			weapon.ReceiveInput();
+			inventory.equippedWeapon.ReceiveInput();
 		}
 	}
 }
