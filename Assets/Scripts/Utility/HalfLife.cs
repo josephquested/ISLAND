@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HalfLife : MonoBehaviour {
 
+	// SYSTEM //
+
 	public float halflife;
 
 	void Start ()
