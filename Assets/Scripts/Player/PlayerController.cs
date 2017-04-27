@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 	void Update ()
 	{
 		UpdateAttack();
-		UpdatePickup();
+		UpdateInteract();
 	}
 
 	void FixedUpdate ()
@@ -63,22 +63,30 @@ public class PlayerController : MonoBehaviour {
 
 	ActorInventory inventory;
 
-	// PICKUP //
+	// INTERACT //
 
 	ActorPickupTrigger pickupTrigger;
 
-	bool pickupDown;
+	bool interactDown;
 
-	public void ReceivePickup (bool _pickupDown)
+	public void ReceiveInteract (bool _interactDown)
 	{
-		pickupDown = _pickupDown;
+		interactDown = _interactDown;
 	}
 
-	void UpdatePickup ()
+	void UpdateInteract ()
 	{
-		if (pickupDown && pickupTrigger.itemInTrigger != null)
+		if (interactDown)
 		{
-			inventory.Pickup(pickupTrigger.itemInTrigger);
+			inventory.ThrowWeapon();
+
+			if (pickupTrigger.itemInTrigger != null)
+			{
+				if (pickupTrigger.itemInTrigger.itemType == ItemType.Weapon)
+				{
+					inventory.EquipWeapon(pickupTrigger.itemInTrigger.GetComponent<Weapon>());
+				}
+			}
 		}
 	}
 }

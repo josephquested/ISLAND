@@ -12,12 +12,12 @@ public class Item : MonoBehaviour {
 
 	// ITEM //
 
-	public virtual void PickupToInventory (ActorInventory inventory)
+	public virtual void AddToInventory ()
 	{
 		// override //
 	}
 
-	public virtual void DropFromInventory (ActorInventory inventory)
+	public virtual void RemoveFromInventory ()
 	{
 		// override //
 	}

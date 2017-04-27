@@ -13,15 +13,14 @@ public class Weapon : Item {
 
 	// PICKUP //
 
-	public override void PickupToInventory (ActorInventory inventory)
+	public override void AddToInventory ()
 	{
 		GetComponent<RotateToCursor>().enabled = true;
 		GetComponent<SpriteRenderer>().sortingOrder += 2;
-		transform.parent = inventory.transform;
 		transform.localPosition = new Vector3(-0.15f, -0.15f, 0);
 	}
 
-	public override void DropFromInventory (ActorInventory inventory)
+	public override void RemoveFromInventory ()
 	{
 		GetComponent<RotateToCursor>().enabled = false;
 		GetComponent<SpriteRenderer>().sortingOrder -= 2;

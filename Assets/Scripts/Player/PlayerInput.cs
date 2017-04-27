@@ -16,7 +16,7 @@ public class PlayerInput : MonoBehaviour {
 	void Update ()
 	{
 		UpdateAttack();
-		UpdatePickup();
+		UpdateInteract();
 	}
 
 	void FixedUpdate ()
@@ -36,8 +36,8 @@ public class PlayerInput : MonoBehaviour {
 		controller.ReceiveAttack(Input.GetButtonDown("Attack"));
 	}
 
-	void UpdatePickup ()
+	void UpdateInteract ()
 	{
-		controller.ReceivePickup(Input.GetButtonDown("Pickup"));
+		controller.ReceiveInteract(Input.GetButtonDown("Interact"));
 	}
 }

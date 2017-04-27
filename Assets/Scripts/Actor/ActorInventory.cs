@@ -4,46 +4,34 @@ using UnityEngine;
 
 public class ActorInventory : MonoBehaviour {
 
-	// INVENTORY //
+	// WEAPON //
 
 	public Weapon equippedWeapon;
 	public Weapon secondaryWeapon;
 
 	public Weapon defaultWeapon;
 
-	// PICKUP //
-
-	public void Pickup (Item item)
+	public void EquipWeapon (Weapon weapon)
 	{
-		switch (item.itemType)
-		{
-			case ItemType.Weapon:
-				EquipWeapon(item.GetComponent<Weapon>());
-				break;
-
-			default:
-				break;
-		}
-	}
-
-	void EquipWeapon (Weapon weapon)
-	{
-		DropEquippedWeapon();
 		equippedWeapon = weapon;
-		weapon.PickupToInventory(this);
+		weapon.transform.parent = transform;
+		weapon.AddToInventory();
 	}
 
-	void DropEquippedWeapon ()
+	public void ThrowWeapon ()
 	{
 		if (equippedWeapon != defaultWeapon)
 		{
-			equippedWeapon.DropFromInventory(this);
-			equippedWeapon = null;
+			equippedWeapon.RemoveFromInventory();
+			equippedWeapon = defaultWeapon;
 		}
-		else
-		{
-			defaultWeapon.gameObject.SetActive(false);
-			equippedWeapon = null;
-		}
+	}
+
+	public void ToggleEquipedWeapon ()
+	{
+		Weapon _equippedWeapon = equippedWeapon;
+		Weapon _secondaryWeapon = equippedWeapon;
+		equippedWeapon = _secondaryWeapon;
+		secondaryWeapon = _equippedWeapon;
 	}
 }
