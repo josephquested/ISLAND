@@ -17,6 +17,7 @@ public class PlayerInput : MonoBehaviour {
 	{
 		UpdateAttack();
 		UpdateInteract();
+		UpdateToggleWeapon();
 	}
 
 	void FixedUpdate ()
@@ -39,5 +40,10 @@ public class PlayerInput : MonoBehaviour {
 	void UpdateInteract ()
 	{
 		controller.ReceiveInteract(Input.GetButtonDown("Interact"));
+	}
+
+	void UpdateToggleWeapon ()
+	{
+		controller.ReceiveToggleWeapon(Input.GetButtonDown("ToggleWeapon"));
 	}
 }

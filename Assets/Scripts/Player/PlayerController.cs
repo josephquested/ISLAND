@@ -63,6 +63,13 @@ public class PlayerController : MonoBehaviour {
 
 	ActorInventory inventory;
 
+	bool toggleWeapon;
+
+	void ReceiveToggleWeapon (bool _toggleWeapon)
+	{
+		toggleWeapon = _toggleWeapon;
+	}
+
 	// INTERACT //
 
 	ActorPickupTrigger pickupTrigger;

@@ -27,7 +27,7 @@ public class ActorInventory : MonoBehaviour {
 		}
 	}
 
-	public void ToggleEquipedWeapon ()
+	public void ToggleWeapon ()
 	{
 		Weapon _equippedWeapon = equippedWeapon;
 		Weapon _secondaryWeapon = equippedWeapon;
