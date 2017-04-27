@@ -18,8 +18,7 @@ public class ActorInventory : MonoBehaviour {
 		switch (item.itemType)
 		{
 			case ItemType.Weapon:
-				DropWeapon(equippedWeapon);
-				PickupWeapon(item.GetComponent<Weapon>());
+				EquipWeapon(item.GetComponent<Weapon>());
 				break;
 
 			default:
@@ -27,22 +26,24 @@ public class ActorInventory : MonoBehaviour {
 		}
 	}
 
-	void PickupWeapon (Weapon weapon)
+	void EquipWeapon (Weapon weapon)
 	{
+		DropEquippedWeapon();
 		equippedWeapon = weapon;
 		weapon.PickupToInventory(this);
 	}
 
-	void DropWeapon (Weapon weapon)
+	void DropEquippedWeapon ()
 	{
 		if (equippedWeapon != defaultWeapon)
 		{
-			weapon.DropFromInventory(this);
+			equippedWeapon.DropFromInventory(this);
+			equippedWeapon = null;
 		}
 		else
 		{
 			defaultWeapon.gameObject.SetActive(false);
+			equippedWeapon = null;
 		}
-		equippedWeapon = null;
 	}
 }
