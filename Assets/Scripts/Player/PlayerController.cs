@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviour {
 	{
 		movement = GetComponent<ActorMovement>();
 		attack = GetComponent<ActorAttack>();
+		pickupTrigger = GetComponentInChildren<ActorPickupTrigger>();
 	}
 
 	void Update ()
 	{
 		UpdateAttack();
+		UpdatePickup();
 	}
 
 	void FixedUpdate ()
@@ -54,5 +56,24 @@ public class PlayerController : MonoBehaviour {
 	void UpdateAttack ()
 	{
 		attack.ReceiveInput(attackDown);
+	}
+
+	// PICKUP //
+
+	ActorPickupTrigger pickupTrigger;
+
+	bool pickupDown;
+
+	public void ReceivePickup (bool _pickupDown)
+	{
+		pickupDown = _pickupDown;
+	}
+
+	void UpdatePickup ()
+	{
+		if (pickupDown)
+		{
+			pickupTrigger.ReceiveInput();
+		}
 	}
 }

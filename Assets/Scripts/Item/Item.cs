@@ -8,25 +8,20 @@ public class Item : MonoBehaviour {
 
 	// SYSTEM //
 
+	public ItemType itemType;
+
 	void Start ()
-	{
-
-	}
-
-	void Update ()
 	{
 
 	}
 
 	// ITEM //
 
-	public ItemType itemType;
-
 	public bool inInventory;
 
 	public void Pickup ()
 	{
-
+		print("pickup!");
 	}
 
 	public void Throw ()
