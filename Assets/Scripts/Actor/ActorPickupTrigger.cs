@@ -6,21 +6,23 @@ public class ActorPickupTrigger : MonoBehaviour {
 
 	// TRIGGERS //
 
-	public Item itemInTrigger;
+	public Weapon weaponInTrigger;
 
 	void OnTriggerEnter2D (Collider2D collider)
 	{
-		if (collider.GetComponent<Item>() != null)
+		if (collider.tag == "Weapon")
 		{
-			itemInTrigger = collider.GetComponent<Item>();
+			Weapon weapon = collider.GetComponent<Weapon>();
+			if (!weapon.inInventory) { weaponInTrigger = weapon; }
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D collider)
 	{
-		if (collider.GetComponent<Item>() != null)
+		if (collider.tag == "Weapon")
 		{
-			itemInTrigger = null;
+			Weapon weapon = collider.GetComponent<Weapon>();
+			if (!weapon.inInventory) { weaponInTrigger = null; }
 		}
 	}
 }

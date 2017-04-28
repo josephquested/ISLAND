@@ -2,61 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : Item {
+public class Weapon : MonoBehaviour {
 
 	// SYSTEM //
 
 	void Start ()
 	{
 		anim = GetComponent<Animator>();
-		rotateToCursor = GetComponent<RotateToCursor>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	// INVENTORY //
 
-	RotateToCursor rotateToCursor;
 	SpriteRenderer spriteRenderer;
 
 	int primaryOrderInLayer = 5;
 	int secondaryOrderInLayer = 3;
+	int defaultOrderInLayer = 2;
 
 	public Vector3 equippedPosition;
+	public Vector3 secondaryPosition;
 
-	public override void AddToInventory (ActorInventory inventory)
+	public override void Pickup (ActorInventory inventory)
 	{
 		transform.parent = inventory.transform;
-		Equip();
 	}
 
-	public override void RemoveFromInventory ()
+	public override void Drop ()
 	{
 		transform.parent = null;
-		Unequip();
 	}
 
 	public void Equip ()
 	{
-		rotateToCursor.enabled = true;
+		gameObject.AddComponent("RotateToCursor");
 		spriteRenderer.sortingOrder = primaryOrderInLayer;
 		transform.localPosition = equippedPosition;
 	}
 
 	public void Unequip ()
 	{
-		rotateToCursor.enabled = false;
+		Destroy(GetComponent<RotateToCursor>());
 		spriteRenderer.sortingOrder = secondaryOrderInLayer;
-	}
-
-	public void SetAsPrimary ()
-	{
-		Equip();
-	}
-
-	public void SetAsSecondary ()
-	{
-		Unequip();
-		transform.localPosition = Vector2.zero;
+		transform.localPosition = secondaryPosition;
 	}
 
 	// ATTACK //
