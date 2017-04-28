@@ -11,98 +11,46 @@ public class PlayerController : MonoBehaviour {
 		movement = GetComponent<ActorMovement>();
 		attack = GetComponent<ActorAttack>();
 		inventory = GetComponent<ActorInventory>();
-		pickupTrigger = GetComponentInChildren<ActorPickupTrigger>();
-	}
-
-	void Update ()
-	{
-		UpdateAttack();
-		UpdateInteract();
-		UpdateToggleWeapon();
-	}
-
-	void FixedUpdate ()
-	{
-		UpdateMovement();
 	}
 
 	// MOVEMENT //
 
 	ActorMovement movement;
 
-	float horizontal;
-	float vertical;
-
-	public void ReceiveAxis (float _horizontal, float _vertical)
+	public void ReceiveMovement (float horizontal, float vertical)
 	{
-		horizontal = _horizontal;
-		vertical = _vertical;
-	}
-
-	void UpdateMovement ()
-	{
-		movement.ReceiveInput(horizontal, vertical);
+		movement.ReceiveMovement(horizontal, vertical);
 	}
 
 	// ATTACK //
 
 	ActorAttack attack;
 
-	bool attackDown;
-
-	public void ReceiveAttack (bool _attackDown)
+	public void ReceiveAttackDown (bool attackDown)
 	{
-		attackDown = _attackDown;
-	}
-
-	void UpdateAttack ()
-	{
-		attack.ReceiveInput(attackDown);
+		if (attackDown)
+		{
+			attack.ReceiveAttackDown();
+		}
 	}
 
 	// INVENTORY //
 
 	ActorInventory inventory;
 
-	bool toggleWeapon;
-
-	public void ReceiveToggleWeapon (bool _toggleWeapon)
+	public void ReceivePickupThrowDown (bool pickupThrowDown)
 	{
-		toggleWeapon = _toggleWeapon;
-	}
-
-	public void UpdateToggleWeapon ()
-	{
-		if (toggleWeapon)
+		if (pickupThrowDown)
 		{
-			inventory.ToggleWeapon();
+			inventory.ReceivePickupThrowDown();
 		}
 	}
 
-	// INTERACT //
-
-	ActorPickupTrigger pickupTrigger;
-
-	bool interactDown;
-
-	public void ReceiveInteract (bool _interactDown)
+	public void ReceiveToggleWeaponDown (bool toggleWeaponDown)
 	{
-		interactDown = _interactDown;
-	}
-
-	void UpdateInteract ()
-	{
-		if (interactDown)
+		if (toggleWeaponDown)
 		{
-			inventory.ThrowWeapon();
-
-			if (pickupTrigger.itemInTrigger != null)
-			{
-				if (pickupTrigger.itemInTrigger.itemType == ItemType.Weapon)
-				{
-					inventory.EquipWeapon(pickupTrigger.itemInTrigger.GetComponent<Weapon>());
-				}
-			}
+			inventory.ReceiveToggleWeaponDown();
 		}
 	}
 }

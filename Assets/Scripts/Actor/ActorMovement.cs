@@ -18,7 +18,7 @@ public class ActorMovement : MonoBehaviour {
 
 	public float speed;
 
-	public void ReceiveInput (float horizontal, float vertical)
+	public void ReceiveMovement (float horizontal, float vertical)
 	{
 		Move(GetMovementVector(horizontal, vertical));
 		Animate(horizontal, vertical);

@@ -18,24 +18,27 @@ public class Weapon : MonoBehaviour {
 
 	int primaryOrderInLayer = 5;
 	int secondaryOrderInLayer = 3;
-	int defaultOrderInLayer = 2;
+
+	public bool inInventory;
 
 	public Vector3 equippedPosition;
 	public Vector3 secondaryPosition;
 
-	public override void Pickup (ActorInventory inventory)
+	public void Pickup (ActorInventory inventory)
 	{
+		inInventory = true;
 		transform.parent = inventory.transform;
 	}
 
-	public override void Drop ()
+	public void Throw ()
 	{
+		inInventory = false;
 		transform.parent = null;
 	}
 
 	public void Equip ()
 	{
-		gameObject.AddComponent("RotateToCursor");
+		gameObject.AddComponent<RotateToCursor>();
 		spriteRenderer.sortingOrder = primaryOrderInLayer;
 		transform.localPosition = equippedPosition;
 	}

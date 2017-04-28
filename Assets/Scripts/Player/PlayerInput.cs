@@ -13,37 +13,37 @@ public class PlayerInput : MonoBehaviour {
 		controller = GetComponent<PlayerController>();
 	}
 
+	void FixedUpdate ()
+	{
+		UpdateMovement();
+	}
+
 	void Update ()
 	{
 		UpdateAttack();
-		UpdateInteract();
+		UpdatePickupThrow();
 		UpdateToggleWeapon();
-	}
-
-	void FixedUpdate ()
-	{
-		UpdateAxis();
 	}
 
 	// INPUTS //
 
-	void UpdateAxis ()
+	void UpdateMovement ()
 	{
-		controller.ReceiveAxis(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+		controller.ReceiveMovement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 	}
 
 	void UpdateAttack ()
 	{
-		controller.ReceiveAttack(Input.GetButtonDown("Attack"));
+		controller.ReceiveAttackDown(Input.GetButtonDown("Attack"));
 	}
 
-	void UpdateInteract ()
+	void UpdatePickupThrow ()
 	{
-		controller.ReceiveInteract(Input.GetButtonDown("Interact"));
+		controller.ReceivePickupThrowDown(Input.GetButtonDown("Pickup/Throw"));
 	}
 
 	void UpdateToggleWeapon ()
 	{
-		controller.ReceiveToggleWeapon(Input.GetButtonDown("ToggleWeapon"));
+		controller.ReceiveToggleWeaponDown(Input.GetButtonDown("ToggleWeapon"));
 	}
 }

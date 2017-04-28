@@ -4,32 +4,59 @@ using UnityEngine;
 
 public class ActorInventory : MonoBehaviour {
 
+	// SYSTEM //
+
+	void Start ()
+	{
+		pickupTrigger = GetComponentInChildren<ActorPickupTrigger>();
+	}
+
+	// INPUT //
+
+	public void ReceivePickupThrowDown ()
+	{
+		ThrowWeapon();
+		PickupWeapon();
+	}
+
+	public void ReceiveToggleWeaponDown ()
+	{
+		ToggleWeapon();
+	}
+
 	// WEAPON //
+
+	ActorPickupTrigger pickupTrigger;
 
 	public Weapon primaryWeapon;
 	public Weapon secondaryWeapon;
 	public Weapon defaultWeapon;
 
-	public void EquipWeapon (Weapon weapon)
+	void PickupWeapon ()
 	{
-		weapon.AddToInventory(this);
-		primaryWeapon = weapon;
+		if (pickupTrigger.weaponInTrigger != null)
+		{
+			Weapon weapon = pickupTrigger.weaponInTrigger;
+			primaryWeapon = weapon;
+			weapon.Pickup(this);
+			weapon.Equip();
+		}
 	}
 
 	public void ThrowWeapon ()
 	{
 		if (primaryWeapon != defaultWeapon)
 		{
-			primaryWeapon.RemoveFromInventory();
+			primaryWeapon.Unequip();
+			primaryWeapon.Throw();
 			primaryWeapon = defaultWeapon;
 		}
 	}
 
 	public void ToggleWeapon ()
 	{
-		primaryWeapon.SetAsSecondary();
-		secondaryWeapon.SetAsPrimary();
-
+		primaryWeapon.Unequip();
+		secondaryWeapon.Equip();
 		Weapon _primaryWeapon = primaryWeapon;
 		primaryWeapon = secondaryWeapon;
 		secondaryWeapon = _primaryWeapon;
