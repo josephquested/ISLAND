@@ -37,7 +37,6 @@ public class ActorInventory : MonoBehaviour {
 		if (pickupTrigger.weaponInTrigger != null && !pickupTrigger.weaponInTrigger.inInventory)
 		{
 			Weapon weapon = pickupTrigger.weaponInTrigger;
-			// pickupTrigger.weaponInTrigger = null;
 			primaryWeapon = weapon;
 			weapon.Pickup(this);
 			weapon.Equip();

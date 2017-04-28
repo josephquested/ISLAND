@@ -27,7 +27,7 @@ public class ActorFacing : MonoBehaviour {
 	{
 		if (faceCursor)
 		{
-			Vector2 mousePos = GetMousePosition();
+			Vector2 mousePos = MousePosition.Get();
 			facingLeft = mousePos.x < transform.position.x;
 		}
 	}
@@ -39,13 +39,5 @@ public class ActorFacing : MonoBehaviour {
 	void UpdateSprite ()
 	{
 		spriteRenderer.flipX = facingLeft;
-	}
-
-	// CURSOR //
-
-	Vector2 GetMousePosition ()
-	{
-		Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
-    return Camera.main.ScreenToWorldPoint(mousePos);
 	}
 }

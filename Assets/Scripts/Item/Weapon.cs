@@ -22,7 +22,9 @@ public class Weapon : MonoBehaviour {
 	public bool inInventory;
 
 	public Vector3 equippedPosition;
-	public Vector3 secondaryPosition;
+	public Vector3 secondaryRotation;
+
+	public float throwForce;
 
 	public void Pickup (ActorInventory inventory)
 	{
@@ -35,7 +37,7 @@ public class Weapon : MonoBehaviour {
 		inInventory = false;
 		transform.parent = null;
 	}
-
+	
 	public void Equip ()
 	{
 		gameObject.AddComponent<RotateToCursor>();
@@ -47,7 +49,8 @@ public class Weapon : MonoBehaviour {
 	{
 		Destroy(GetComponent<RotateToCursor>());
 		spriteRenderer.sortingOrder = secondaryOrderInLayer;
-		transform.localPosition = secondaryPosition;
+		transform.localPosition = Vector3.zero;
+		transform.eulerAngles = secondaryRotation;
 	}
 
 	// ATTACK //
