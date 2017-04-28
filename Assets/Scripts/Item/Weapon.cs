@@ -54,11 +54,11 @@ public class Weapon : MonoBehaviour {
 
 	public GameObject attackPrefab;
 	public Transform attackSpawn;
-
-	public bool attacking;
 	public bool inheritParentVelocity;
 
-	public virtual void ReceiveInput ()
+	bool attacking;
+
+	public virtual void ReceiveAttackDown ()
 	{
 		if (!attacking)
 		{

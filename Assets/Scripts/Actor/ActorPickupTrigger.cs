@@ -12,8 +12,7 @@ public class ActorPickupTrigger : MonoBehaviour {
 	{
 		if (collider.tag == "Weapon")
 		{
-			Weapon weapon = collider.GetComponent<Weapon>();
-			if (!weapon.inInventory) { weaponInTrigger = weapon; }
+			weaponInTrigger = collider.GetComponent<Weapon>();
 		}
 	}
 
@@ -21,8 +20,7 @@ public class ActorPickupTrigger : MonoBehaviour {
 	{
 		if (collider.tag == "Weapon")
 		{
-			Weapon weapon = collider.GetComponent<Weapon>();
-			if (!weapon.inInventory) { weaponInTrigger = null; }
+			weaponInTrigger = null;
 		}
 	}
 }

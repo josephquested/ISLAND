@@ -10,7 +10,7 @@ public class ActorAttack : MonoBehaviour {
 	{
 		inventory = GetComponent<ActorInventory>();
 	}
-	
+
 	// ATTACK //
 
 	ActorInventory inventory;
@@ -19,6 +19,6 @@ public class ActorAttack : MonoBehaviour {
 
 	public void ReceiveAttackDown ()
 	{
-		inventory.primaryWeapon.ReceiveInput();
+		inventory.primaryWeapon.ReceiveAttackDown();
 	}
 }
